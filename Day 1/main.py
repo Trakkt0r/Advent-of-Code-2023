@@ -30,7 +30,7 @@ def part_one(task_input):
                 first_digit_character = character
                 break
 
-        for character in reversed(line):            # looking through the reversed line is faster, we don't need to loop throuh the middle
+        for character in reversed(line):            # looking through the reversed line is faster, we don't need to loop through the middle
 
             if character in NUMBERS:
 
@@ -46,7 +46,7 @@ def part_two(task_input):
 
     for line in task_input:
 
-        char_memory             = ""                    # FIFO, at most MAX_WORD_LEN length, use: finding word num  
+        char_memory             = ""                    # FIFO, at most MAX_WORD_LEN length, use: finding a number word 
         first_digit_character   = ""
 
 
@@ -61,12 +61,12 @@ def part_two(task_input):
 
             char_memory += character                    
 
-            first_digit_character = find_in_char_memory(char_memory[-MAX_WORD_LEN:])            # Adds to char_memory from the right
+            first_digit_character = find_in_char_memory(char_memory[-MAX_WORD_LEN:])        # the split adds to char_memory from the right
 
             if first_digit_character:                   # I believe this is the only way to compute it and check if it even
                 break                                   # exists without rerunning the function again, it's pretty expensive
         
-        char_memory = ""                                # Even though not resetting it didn't cause any issues, I believe it could
+        char_memory = ""                                # even though not resetting it didn't cause any issues, I think it potentially could
 
         # Last number add to first
 
@@ -79,7 +79,7 @@ def part_two(task_input):
 
             char_memory += character
 
-            found_character = find_in_char_memory(char_memory[:-MAX_WORD_LEN-1:-1])             # Adds to char_memory add from the left
+            found_character = find_in_char_memory(char_memory[:-MAX_WORD_LEN-1:-1])         # the split adds to char_memory from the right
 
             if found_character:
 
