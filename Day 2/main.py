@@ -1,5 +1,5 @@
 with open("Day 2\input.txt", "r") as input_file:
-    main_input = [line.replace("\n", "")[5:] for line in input_file]
+    main_input = [line.replace("\n", "")[5:] for line in input_file]            # [5:] gets rid of the "Game " that gives no purpose in the data
 
 colors = {"red": 12, "green": 13, "blue": 14}
 
