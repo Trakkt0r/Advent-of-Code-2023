@@ -1,13 +1,13 @@
 with open("Day 3\input.txt", "r") as input_file:
     main_input = [line.replace("\n", "") for line in input_file]                       
 
-# used in both parts, this function returns the amount of unique 
+# Used in both parts, this function returns the amount of unique 
 def find_numeric_neighbors(task_input, x, y):
 
-    line_amount = len(task_input)           # max Y bound
-    line_length = len(task_input[y])        # max X bound
+    line_amount = len(task_input)           # Max Y bound
+    line_length = len(task_input[y])        # Max X bound
 
-    offsets = (-1, 0, 1)                    # this is the possible offsets for both x, y -> 3^2 = 9 - (0, 0) = 8 possible choices
+    offsets = (-1, 0, 1)                    # This is the possible offsets for both x, y -> 3^2 = 9, ignore (0, 0) = itself -> 8 possible choices
 
     # Makes sure a neighbor is not out of the bounds of the list, is not itself and that it is a number :)
     existing_neighbors = [(x+x_off, y+y_off) for x_off in offsets for y_off in offsets if 0 <= x+x_off< line_length and 0 <= y+y_off < line_amount and (x_off != 0 or y_off != 0) and task_input[y+y_off][x+x_off].isnumeric()]
@@ -18,12 +18,12 @@ def find_numeric_neighbors(task_input, x, y):
     return unique_part_neighbors
 
 
-# used in both parts, this function will take in any point in the grid and find the rest of the part number it hit
+# Used in both parts, this function will take in any point in the grid and find the rest of the part number it hit
 def find_rest_of_number(task_input, x, y):
 
     line = task_input[y]
     line_length = len(line) 
-    number = ""             # string for concatenation
+    number = ""                             # String for easier concatenation
 
     for i in range(x, -1, -1):
         
@@ -76,7 +76,7 @@ def part_two(task_input):
 
             character = line[x]
 
-            # while these could be compacted into 1 if statement, most characters 
+            # While these could be compacted into 1 if statement, most characters 
             # aren't "*", therefore it would make this code many times slower
 
             if character != "*":
